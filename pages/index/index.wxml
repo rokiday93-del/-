@@ -1,0 +1,27 @@
+<view class="container">
+  <!-- 发布订单按钮 -->
+  <button class="btn-primary" bindtap="goPublish">+ 发布代取订单</button>
+
+  <!-- 订单列表：直接循环JS提前过滤好的待接单列表 -->
+  <view class="order-list">
+    <view class="card order-item" wx:for="{{pendingOrderList}}" wx:key="id">
+      <view class="flex-between">
+        <text class="text-primary">悬赏 ¥{{item.price}}</text>
+        <text class="text-muted">{{item.createTime}}</text>
+      </view>
+      
+      <view class="flex-column" style="margin: 20rpx 0; gap: 12rpx;">
+        <view>取件地址：{{item.fromAddress}}</view>
+        <view>送达地址：{{item.toAddress}}</view>
+        <view class="text-muted">备注：{{item.remark || '无'}}</view>
+      </view>
+
+      <button class="btn-primary" style="width: 200rpx; height: 60rpx; line-height: 60rpx; font-size: 28rpx; margin: 0;" bindtap="takeOrder" data-order="{{item}}">立即接单</button>
+    </view>
+
+    <!-- 空状态：直接判断过滤后的列表长度，无复杂表达式 -->
+    <view wx:if="{{pendingOrderList.length === 0}}" class="empty">
+      <text class="text-muted">暂无待接单订单，快去发布第一单吧</text>
+    </view>
+  </view>
+</view>

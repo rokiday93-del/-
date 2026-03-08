@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="header">
+    <text class="title">平台认证骑手</text>
+    <button class="btn-primary" style="width: 200rpx; height: 60rpx; line-height: 60rpx; font-size: 28rpx; margin: 0;" bindtap="goJoin">我要入驻</button>
+  </view>
+
+  <view class="rider-list">
+    <view class="card rider-item" wx:for="{{riderList}}" wx:key="riderId">
+      <view class="flex-between">
+        <text class="name">{{item.name}}</text>
+        <text class="text-primary">接单量 {{item.orderCount}} 单</text>
+      </view>
+      <view class="text-muted" style="margin-top: 12rpx;">入驻时间：{{item.joinTime}}</view>
+    </view>
+
+    <view wx:if="{{riderList.length === 0}}" class="empty">
+      <text class="text-muted">暂无骑手入驻，快来成为第一个骑手吧~</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12rpx;
+    margin-bottom: 30rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 1rpx solid #f0f0f0;
+  }
+  .form-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .form-item text {
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #333;
+  }
+  .form-item input {
+    height: 70rpx;
+    font-size: 28rpx;
+    padding: 0 20rpx;
+    background-color: #f8f8f8;
+    border-radius: 8rpx;
+  }

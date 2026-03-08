@@ -1,0 +1,20 @@
+/* pages/rider/rider.wxss */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+  }
+  .title {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #333;
+  }
+  .name {
+    font-size: 32rpx;
+    font-weight: 500;
+  }
+  .empty {
+    text-align: center;
+    padding: 100rpx 0;
+  }

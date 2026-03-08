@@ -1,0 +1,34 @@
+<view class="container">
+  <!-- 切换tab -->
+  <view class="tab">
+    <text class="{{activeTab === 'publish' ? 'active' : ''}}" bindtap="switchTab" data-tab="publish">我发布的</text>
+    <text class="{{activeTab === 'take' ? 'active' : ''}}" bindtap="switchTab" data-tab="take">我接单的</text>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <view class="card order-item" wx:for="{{showOrderList}}" wx:key="id">
+      <view class="flex-between">
+        <text class="text-primary">¥{{item.price}}</text>
+        <text class="text-muted">{{item.createTime}}</text>
+      </view>
+      
+      <view class="flex-column" style="margin: 20rpx 0; gap: 12rpx;">
+        <view>取件：{{item.fromAddress}}</view>
+        <view>送达：{{item.toAddress}}</view>
+        <view wx:if="{{item.riderName}}" class="text-muted">接单骑手：{{item.riderName}}</view>
+        <view class="order-status">
+          <text class="{{item.status === '待接单' ? 'text-muted' : item.status === '已接单' ? 'text-primary' : 'text-success'}}">{{item.status}}</text>
+        </view>
+      </view>
+
+      <!-- 已接单的订单，骑手可以点击完成 -->
+      <button wx:if="{{activeTab === 'take' && item.status === '已接单'}}" class="btn-primary" style="width: 200rpx; height: 60rpx; line-height: 60rpx; font-size: 28rpx; margin: 0;" bindtap="finishOrder" data-order="{{item}}">完成订单</button>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{showOrderList.length === 0}}" class="empty">
+      <text class="text-muted">暂无相关订单</text>
+    </view>
+  </view>
+</view>

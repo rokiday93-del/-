@@ -1,0 +1,10 @@
+.order-item {
+  transition: all 0.2s;
+}
+.order-item:active {
+  transform: scale(0.98);
+}
+.empty {
+  text-align: center;
+  padding: 100rpx 0;
+}
